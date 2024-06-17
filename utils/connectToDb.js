@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 async function connectToDb() {
   try {
     await mongoose.connect(
-      "mongodb+srv://andreipopoaca8:bxXXZ1KpzdcWEtMr@cluster0.ozno1ue.mongodb.net/db-contacts"
+      "mongodb+srv://ssebastiandd:goit2024@sebastiandd.ubifwe2.mongodb.net/?retryWrites=true&w=majority&appName=Sebastiandd"
     );
     console.log("Database connection successful");
   } catch (error) {
