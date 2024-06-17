@@ -1,25 +1,32 @@
-const express = require('express')
+import mongoose from "mongoose";
+const { Schema } = mongoose;
 
-const router = express.Router()
+const contactSchema = new Schema({
+  name: {
+    type: String,
+    required: [true, "Set name for contact"],
+    minlength: 3,
+    maxlength: 100,
+  },
+  email: {
+    type: String,
+    required: [true, "Set email for contact"],
+  },
+  phone: {
+    type: String,
+    required: [true, "Set phone number for contact"],
+  },
+  favorite: {
+    type: Boolean,
+    default: false,
+  },
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: "user",
+    required: true,
+  },
+});
 
-router.get('/', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
+const Contact = mongoose.model("Contact", contactSchema);
 
-router.get('/:contactId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
-
-router.post('/', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
-
-router.delete('/:contactId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
-
-router.put('/:contactId', async (req, res, next) => {
-  res.json({ message: 'template message' })
-})
-
-module.exports = router
+export default Contact;
